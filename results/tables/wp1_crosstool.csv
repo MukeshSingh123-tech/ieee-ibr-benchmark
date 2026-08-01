@@ -1,0 +1,17 @@
+case,algorithm,converged,max_dvm_pu,max_dva_deg,ybus_err,gate_vm_pu,passes_gate
+case9,nr,True,3.63081e-11,1.18686e-09,0,1e-08,True
+case9,gs,True,1.96451e-09,2.60837e-06,0,1e-06,True
+case9,fdxb,True,3.56415e-11,1.15406e-09,0,1e-08,True
+case9,fdbx,True,3.3486e-11,1.1145e-09,0,1e-08,True
+case14,nr,True,6.19726e-12,3.85057e-10,7.10543e-15,1e-08,True
+case14,gs,True,3.56136e-09,2.31214e-06,7.10543e-15,1e-06,True
+case14,fdxb,True,6.28009e-12,2.96154e-10,7.10543e-15,1e-08,True
+case14,fdbx,True,6.19527e-12,3.86507e-10,7.10543e-15,1e-08,True
+case30,nr,True,8.93752e-12,6.35936e-10,1.42109e-14,1e-08,True
+case30,gs,True,8.99345e-09,1.03981e-05,1.42109e-14,1e-06,True
+case30,fdxb,True,8.83615e-12,9.39878e-10,1.42109e-14,1e-08,True
+case30,fdbx,True,8.92664e-12,6.16211e-10,1.42109e-14,1e-08,True
+case39,nr,True,6.97986e-11,8.17616e-09,5.68434e-14,1e-08,True
+case39,gs,False,nan,nan,5.68434e-14,1e-06,False
+case39,fdxb,True,6.99051e-11,8.22814e-09,5.68434e-14,1e-08,True
+case39,fdbx,True,6.99183e-11,8.27563e-09,5.68434e-14,1e-08,True

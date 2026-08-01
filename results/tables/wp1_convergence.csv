@@ -1,0 +1,17 @@
+case,n_bus,algorithm,converged,iterations,time_ms,final_mismatch,jacobian_cond
+case9,9,nr,True,4,2.9249,5.55112e-14,59.0419
+case9,9,gs,True,74,12.3083,9.49841e-09,nan
+case9,9,fdxb,True,10,1.9396,1.00449e-11,nan
+case9,9,fdbx,True,9,1.5187,2.24591e-11,nan
+case14,14,nr,True,4,2.0801,9.312e-15,117.782
+case14,14,gs,True,77,19.5407,8.4803e-09,nan
+case14,14,fdxb,True,10,3.2073,2.07555e-11,nan
+case14,14,fdbx,True,13,2.3522,1.903e-11,nan
+case30,30,nr,True,4,3.2649,1.02445e-14,501.313
+case30,30,gs,True,247,105.56,9.54465e-09,nan
+case30,30,fdxb,True,14,3.4804,3.5881e-11,nan
+case30,30,fdbx,True,9,2.372,3.00245e-11,nan
+case39,39,nr,True,4,4.353,3.31896e-11,1606.28
+case39,39,gs,False,5000,3017.2,0.000380503,nan
+case39,39,fdxb,True,12,3.6887,1.53416e-11,nan
+case39,39,fdbx,True,13,3.0824,6.88885e-11,nan

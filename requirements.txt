@@ -1,0 +1,21 @@
+# Python stack for the IEEE IBR benchmark.
+# Verified working on Python 3.13.7 / Windows 11.
+#
+#   cd IEEE/python
+#   python -m pip install -r ../requirements.txt
+
+pandapower>=3.0        # tested with 3.5.4; ships the IEEE test cases
+numpy>=1.26            # tested with 2.4.2
+pandas>=2.0
+scipy>=1.11
+matplotlib>=3.8
+PyYAML>=6.0            # config/scenarios.yaml
+pytest>=8.0            # python/tests/
+tabulate>=0.9
+
+# Optional but strongly recommended: pandapower falls back to a slow pure-Python
+# path without it and prints a warning on every solve.
+numba>=0.60
+
+# Deferred work (WP6 distribution / OpenDSS). Uncomment when starting that.
+# py-dss-interface>=2.0

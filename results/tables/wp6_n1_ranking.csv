@@ -1,0 +1,215 @@
+case,pen_pct,branch,status,n_violations,max_loading_pct,min_vm_pu
+case14,0,1-2,diverged,-1,nan,nan
+case14,0,5-6,diverged,-1,nan,nan
+case14,0,7-8,islands network,0,nan,nan
+case14,0,1-5,solved,12,2.62782,0.873083
+case14,0,2-3,solved,12,1.73359,0.71651
+case14,0,4-5,solved,0,1.80506,1.01
+case14,0,3-4,solved,0,1.65609,1.01
+case14,0,6-13,solved,0,1.60705,0.997979
+case14,0,6-11,solved,0,1.60247,1.01
+case14,0,13-14,solved,0,1.60105,1.01
+case14,0,6-12,solved,0,1.60004,1.01
+case14,0,10-11,solved,0,1.60003,1.01
+case14,0,12-13,solved,0,1.59816,1.01
+case14,0,9-14,solved,0,1.59785,0.99687
+case14,0,9-10,solved,0,1.59646,1.01
+case14,0,4-9,solved,0,1.59508,1.01
+case14,0,4-7,solved,0,1.59366,1.01
+case14,0,7-9,solved,0,1.5917,1.01
+case14,0,2-4,solved,0,1.44876,1.0071
+case14,0,2-5,solved,0,1.44567,1.01
+case14,65.4,7-8,islands network,0,nan,nan
+case14,65.4,1-2,solved,0,2.6638,0.993484
+case14,65.4,1-5,solved,0,2.45404,1.00644
+case14,65.4,4-5,solved,0,1.81612,1.01
+case14,65.4,3-4,solved,0,1.65609,1.01
+case14,65.4,5-6,solved,0,1.6454,1.01
+case14,65.4,6-13,solved,0,1.60705,0.997979
+case14,65.4,6-11,solved,0,1.60247,1.01
+case14,65.4,13-14,solved,0,1.60105,1.01
+case14,65.4,6-12,solved,0,1.60004,1.01
+case14,65.4,10-11,solved,0,1.60003,1.01
+case14,65.4,12-13,solved,0,1.59816,1.01
+case14,65.4,9-14,solved,0,1.59785,0.99687
+case14,65.4,9-10,solved,0,1.59646,1.01
+case14,65.4,4-9,solved,0,1.59508,1.01
+case14,65.4,4-7,solved,0,1.59366,1.01
+case14,65.4,7-9,solved,0,1.5917,1.01
+case14,65.4,2-3,solved,0,1.50907,1.01
+case14,65.4,2-4,solved,0,1.44876,1.0071
+case14,65.4,2-5,solved,0,1.44567,1.01
+case30,0,9-11,islands network,0,nan,nan
+case30,0,12-13,islands network,0,nan,nan
+case30,0,25-26,islands network,0,nan,nan
+case30,0,10-20,solved,4,108.901,0.927866
+case30,0,6-8,solved,3,142.473,0.864202
+case30,0,15-18,solved,3,108.753,0.946492
+case30,0,27-29,solved,2,108.942,0.923822
+case30,0,19-20,solved,2,108.876,0.93837
+case30,0,21-22,solved,2,107.975,0.945273
+case30,0,15-23,solved,2,107.894,0.958433
+case30,0,4-6,solved,2,107.342,0.947536
+case30,0,28-27,solved,1,114.377,0.956326
+case30,0,10-22,solved,1,114.323,0.959284
+case30,0,23-24,solved,1,109.56,0.960314
+case30,0,6-7,solved,1,109.122,0.941257
+case30,0,27-30,solved,1,108.978,0.914492
+case30,0,10-17,solved,1,108.808,0.930677
+case30,0,2-6,solved,1,108.013,0.951184
+case30,0,25-27,solved,1,105.658,0.94925
+case30,0,8-28,solved,0,134.764,0.956116
+case30,0,12-15,solved,0,109.191,0.960623
+case30,0,9-10,solved,0,109.117,0.959171
+case30,0,6-9,solved,0,109.117,0.959171
+case30,0,6-10,solved,0,108.94,0.95985
+case30,0,12-14,solved,0,108.919,0.960345
+case30,0,12-16,solved,0,108.917,0.96026
+case30,0,16-17,solved,0,108.884,0.960446
+case30,0,29-30,solved,0,108.87,0.950486
+case30,0,1-2,solved,0,108.828,0.960879
+case30,0,14-15,solved,0,108.819,0.960591
+case30,0,18-19,solved,0,108.78,0.957907
+case30,0,10-21,solved,0,108.669,0.958378
+case30,0,4-12,solved,0,108.652,0.96001
+case30,0,3-4,solved,0,108.579,0.957135
+case30,0,1-3,solved,0,108.519,0.956311
+case30,0,22-24,solved,0,108.483,0.960617
+case30,0,2-4,solved,0,108.463,0.955475
+case30,0,2-5,solved,0,108.335,0.952203
+case30,0,5-7,solved,0,108.289,0.950693
+case30,0,24-25,solved,0,107.141,0.960791
+case30,0,6-28,solved,0,104.743,0.960363
+case30,80.1,9-11,islands network,0,nan,nan
+case30,80.1,12-13,islands network,0,nan,nan
+case30,80.1,25-26,islands network,0,nan,nan
+case30,80.1,10-20,solved,4,108.901,0.927866
+case30,80.1,6-8,solved,3,142.473,0.864202
+case30,80.1,15-18,solved,3,108.753,0.946492
+case30,80.1,27-29,solved,2,108.942,0.923822
+case30,80.1,19-20,solved,2,108.876,0.93837
+case30,80.1,21-22,solved,2,107.975,0.945273
+case30,80.1,15-23,solved,2,107.894,0.958433
+case30,80.1,4-6,solved,2,107.342,0.947536
+case30,80.1,28-27,solved,1,114.377,0.956326
+case30,80.1,10-22,solved,1,114.323,0.959284
+case30,80.1,23-24,solved,1,109.56,0.960314
+case30,80.1,6-7,solved,1,109.122,0.941257
+case30,80.1,27-30,solved,1,108.978,0.914492
+case30,80.1,10-17,solved,1,108.808,0.930677
+case30,80.1,2-6,solved,1,108.013,0.951184
+case30,80.1,25-27,solved,1,105.658,0.94925
+case30,80.1,8-28,solved,0,134.764,0.956116
+case30,80.1,12-15,solved,0,109.191,0.960623
+case30,80.1,9-10,solved,0,109.117,0.959171
+case30,80.1,6-9,solved,0,109.117,0.959171
+case30,80.1,6-10,solved,0,108.94,0.95985
+case30,80.1,12-14,solved,0,108.919,0.960345
+case30,80.1,12-16,solved,0,108.917,0.96026
+case30,80.1,16-17,solved,0,108.884,0.960446
+case30,80.1,29-30,solved,0,108.87,0.950486
+case30,80.1,1-2,solved,0,108.828,0.960879
+case30,80.1,14-15,solved,0,108.819,0.960591
+case30,80.1,18-19,solved,0,108.78,0.957907
+case30,80.1,10-21,solved,0,108.669,0.958378
+case30,80.1,4-12,solved,0,108.652,0.96001
+case30,80.1,3-4,solved,0,108.579,0.957135
+case30,80.1,1-3,solved,0,108.519,0.956311
+case30,80.1,22-24,solved,0,108.483,0.960617
+case30,80.1,2-4,solved,0,108.463,0.955475
+case30,80.1,2-5,solved,0,108.335,0.952203
+case30,80.1,5-7,solved,0,108.289,0.950693
+case30,80.1,24-25,solved,0,107.141,0.960791
+case30,80.1,6-28,solved,0,104.743,0.960363
+case39,0,16-19,islands network,0,nan,nan
+case39,0,23-36,islands network,0,nan,nan
+case39,0,2-30,islands network,0,nan,nan
+case39,0,6-31,islands network,0,nan,nan
+case39,0,10-32,islands network,0,nan,nan
+case39,0,19-20,islands network,0,nan,nan
+case39,0,19-33,islands network,0,nan,nan
+case39,0,20-34,islands network,0,nan,nan
+case39,0,22-35,islands network,0,nan,nan
+case39,0,25-37,islands network,0,nan,nan
+case39,0,29-38,islands network,0,nan,nan
+case39,0,3-4,solved,6,77.3188,0.982
+case39,0,2-3,solved,4,80.2538,0.982
+case39,0,21-22,solved,3,162.008,0.96845
+case39,0,26-27,solved,3,110.485,0.982
+case39,0,6-11,solved,3,106.685,0.982
+case39,0,13-14,solved,2,133.497,0.982
+case39,0,23-24,solved,2,113.505,0.982
+case39,0,10-13,solved,2,112.816,0.982
+case39,0,2-25,solved,2,84.1321,0.982
+case39,0,16-24,solved,2,76.8985,0.982
+case39,0,16-21,solved,1,114.542,0.982
+case39,0,10-11,solved,1,109.496,0.982
+case39,0,4-14,solved,1,104.152,0.982
+case39,0,15-16,solved,1,82.5932,0.936887
+case39,0,8-9,solved,1,77.5355,0.973275
+case39,0,1-2,solved,0,94.0838,0.982
+case39,0,5-6,solved,0,91.9501,0.982
+case39,0,26-29,solved,0,90.2309,0.982
+case39,0,28-29,solved,0,90.2212,0.982
+case39,0,5-8,solved,0,86.692,0.982
+case39,0,6-7,solved,0,86.3137,0.973985
+case39,0,17-18,solved,0,86.1284,0.982
+case39,0,16-17,solved,0,85.5921,0.982
+case39,0,4-5,solved,0,83.2659,0.982
+case39,0,1-39,solved,0,78.5469,0.982
+case39,0,25-26,solved,0,77.1004,0.982
+case39,0,17-27,solved,0,76.5484,0.982
+case39,0,26-28,solved,0,76.5037,0.982
+case39,0,22-23,solved,0,76.4165,0.982
+case39,0,9-39,solved,0,76.4035,0.982
+case39,0,14-15,solved,0,76.4017,0.982
+case39,0,3-18,solved,0,76.3942,0.982
+case39,0,7-8,solved,0,76.3857,0.982
+case39,0,12-11,solved,0,76.3774,0.979403
+case39,0,12-13,solved,0,76.3418,0.978046
+case39,84,16-19,islands network,0,nan,nan
+case39,84,23-36,islands network,0,nan,nan
+case39,84,2-30,islands network,0,nan,nan
+case39,84,6-31,islands network,0,nan,nan
+case39,84,10-32,islands network,0,nan,nan
+case39,84,19-20,islands network,0,nan,nan
+case39,84,19-33,islands network,0,nan,nan
+case39,84,20-34,islands network,0,nan,nan
+case39,84,22-35,islands network,0,nan,nan
+case39,84,25-37,islands network,0,nan,nan
+case39,84,29-38,islands network,0,nan,nan
+case39,84,21-22,solved,3,162.008,0.96845
+case39,84,6-11,solved,3,106.685,0.982
+case39,84,13-14,solved,2,133.497,0.982
+case39,84,23-24,solved,2,113.505,0.982
+case39,84,10-13,solved,2,112.816,0.982
+case39,84,26-27,solved,2,109.64,0.982
+case39,84,16-24,solved,2,76.8985,0.982
+case39,84,16-21,solved,1,114.542,0.982
+case39,84,10-11,solved,1,109.496,0.982
+case39,84,4-14,solved,1,104.152,0.982
+case39,84,2-25,solved,1,84.1856,0.982
+case39,84,15-16,solved,1,82.5934,0.936885
+case39,84,2-3,solved,1,78.6548,0.982
+case39,84,3-4,solved,1,77.5387,0.981622
+case39,84,8-9,solved,1,77.5355,0.973275
+case39,84,1-2,solved,0,94.0838,0.982
+case39,84,5-6,solved,0,91.9501,0.982
+case39,84,26-29,solved,0,90.2309,0.982
+case39,84,28-29,solved,0,90.2212,0.982
+case39,84,5-8,solved,0,86.6922,0.982
+case39,84,6-7,solved,0,86.3137,0.973985
+case39,84,17-18,solved,0,86.0367,0.982
+case39,84,16-17,solved,0,85.5921,0.982
+case39,84,4-5,solved,0,83.2659,0.982
+case39,84,1-39,solved,0,78.5654,0.982
+case39,84,25-26,solved,0,77.1048,0.982
+case39,84,17-27,solved,0,76.5484,0.982
+case39,84,26-28,solved,0,76.5037,0.982
+case39,84,22-23,solved,0,76.4162,0.982
+case39,84,14-15,solved,0,76.4017,0.982
+case39,84,9-39,solved,0,76.4016,0.982
+case39,84,3-18,solved,0,76.3942,0.982
+case39,84,7-8,solved,0,76.3857,0.982
+case39,84,12-11,solved,0,76.3786,0.979389
+case39,84,12-13,solved,0,76.345,0.978016

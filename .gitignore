@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# MATLAB / Simulink
+*.asv
+*.slxc
+slprj/
+*.autosave
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# generated logs (tables and figures ARE committed -- they are the evidence)
+results/logs/*
+!results/logs/.gitkeep
+
+# --- MATLAB half: tracked in a separate repo, see README2.md ---
+matlab/
+pscad/
+etap/
+digsilent/
+report/
+linkedin/
+README2.md

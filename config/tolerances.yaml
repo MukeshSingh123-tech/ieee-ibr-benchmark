@@ -1,0 +1,131 @@
+# =============================================================================
+# Pass/fail thresholds for cross-tool validation.
+#
+# These are GATES, not suggestions. python/tests/ asserts against them and the
+# test suite fails the build if a tool drifts. A figure whose underlying study
+# did not pass its gate does not go in the report.
+# =============================================================================
+
+# --- Tool-to-tool agreement on the SAME classical problem -------------------
+# Any disagreement here is a bug in our setup, not physics.
+cross_tool:
+  matpower_vs_pandapower:
+    vm_pu: 1.0e-6            # bus voltage magnitude
+    va_deg: 1.0e-4           # bus voltage angle
+    branch_p_mw: 1.0e-4
+    branch_q_mvar: 1.0e-4
+    total_loss_mw: 1.0e-4
+
+  # Our own solvers must reproduce the reference solver. The gate differs by
+  # solver because the CONVERGENCE CRITERIA differ, and comparing them against a
+  # single threshold would be a methodological error rather than a finding:
+  #   NR / FDLF converge on POWER MISMATCH to 1e-10 -> voltages land near 1e-11
+  #   Gauss-Seidel converges on VOLTAGE CHANGE to 1e-8 -> voltages land near 1e-8
+  # Holding GS to the Newton gate would fail it for being asked a different
+  # question, not for being wrong.
+  handwritten_vs_matpower:
+    vm_pu: 1.0e-8
+    va_deg: 1.0e-6
+  handwritten_gs_vs_matpower:
+    vm_pu: 1.0e-6
+    va_deg: 1.0e-4
+
+  roundtrip_conversion:      # MATPOWER -> pandapower -> MATPOWER
+    vm_pu: 1.0e-9
+    ybus_abs: 1.0e-9
+
+  etap_vs_matpower:          # GUI tool, manual entry, different line models
+    vm_pu: 1.0e-3            # 0.1 %
+    va_deg: 1.0e-1
+
+  pscad_prefault_vs_matpower:   # confirms the Thevenin extraction at the POI
+    vm_pu: 5.0e-3
+    va_deg: 5.0e-1
+
+  opendss_vs_published_ref:  # IEEE 13-node ships with reference results
+    vm_pu: 1.0e-3
+
+# --- Agreement against published literature values --------------------------
+reference:
+  fault_current_pct: 2.0     # our Zbus 3LG vs published IEEE 14-bus values
+
+# --- Solver convergence -----------------------------------------------------
+solver:
+  nr_tol_pu: 1.0e-10
+  nr_max_iter: 50
+  gs_tol_pu: 1.0e-8
+  gs_max_iter: 5000          # GS is slow by nature - that is a WP1 result
+  ibr_pf_tol_pu: 1.0e-8      # outer loop of the IBR-aware power flow
+  ibr_pf_max_iter: 100
+  ibr_pf_relaxation: 0.7     # under-relaxation if the outer loop oscillates
+  ibr_fault_tol_pu: 1.0e-8
+  ibr_fault_max_iter: 200
+
+# --- Physical sanity checks -------------------------------------------------
+# Tripped by any study; a violation means the model is wrong, not interesting.
+sanity:
+  vm_pu_min: 0.50            # below this a phasor load flow solution is nonsense
+  vm_pu_max: 1.50
+  max_branch_loading_pct: 200.0
+  ibr_current_overshoot_pu: 0.01    # solved |I| may not exceed limit by more than this
+
+# --- Fidelity gaps we EXPECT to find (WP5) ----------------------------------
+# NOT gates. These are the hypotheses; recording them up front stops us from
+# rationalising whatever number comes out.
+expected_findings:
+  note: >
+    Hypotheses stated BEFORE running, with the outcome recorded afterwards.
+    Kept here so the report cannot quietly rationalise whatever came out.
+  classical_pf_error_negligible_below_pct: 40
+  classical_pf_error_diverges_below_scr: 3.0
+  fault_error_worst_types: [SLG, LL]     # negative-sequence dependent
+  gfm_extends_cct: true                  # not yet tested (needs the EMT work)
+  ieee2800_reduces_misoperation: true
+
+  outcomes:
+    classical_pf_error_negligible_at_nominal: CONFIRMED
+      # exactly 0.00000 pu at nominal loading; the current limit does not bind
+      # until the system is stressed. Penetration must be swept against loading.
+    fault_current_falls_with_penetration: CONFIRMED
+      # case39: -13% at 29% penetration, -63% at 84%
+    protection_misoperation_rises: CONFIRMED
+      # case39: 4.5% -> 91.4% of relay cases misoperate
+    inertia_falls_and_rocof_rises: CONFIRMED
+      # case39: RoCoF -1.01 -> -6.32 Hz/s
+    ieee2800_reduces_misoperation: NOT CONFIRMED
+      # better at 68.5% (56.8 -> 50.0%), slightly worse at 84% (91.4 -> 94.3%).
+      # By 84% penetration fault current is too low for negative-sequence
+      # support to restore relay pickup: the binding constraint has moved from
+      # sequence content to magnitude.
+    gfm_restores_well_posedness: CONFIRMED
+      # 100% IBR all-GFL is ill-posed (0% solvable). 25% GFM -> 100% well-posed.
+    gfm_restores_system_strength: CONFIRMED
+      # case39 @68.5% IBR: WSCR 0.63 -> 2.99 as GFM share goes 0 -> 100%
+    synchronous_condensers_restore_strength: CONFIRMED
+      # case39: 2x400 MVA raises Ssc at weak sites 162%, min SCR 1.76 -> 2.74,
+      # RoCoF -6.32 -> -3.78 Hz/s
+    gfm_extends_cct: CONFIRMED
+      # CONTROLLED test only (fixed topology, dispatch and dynamic-unit count):
+      # case39 @68.5% IBR, CCT 0.090 -> 0.367 s across H_virtual 0.5 -> 16 s
+      # (4.1x); @84% 0.062 -> 0.449 s (7.1x); case9 4.4x.
+      # Baseline validated: 0.121 s on intact case39 vs published ~0.15 s.
+    cct_comparable_across_penetration: REFUTED
+      # A grid-following penetration sweep makes CCT appear to IMPROVE
+      # (0.121 -> 0.977 s) because converting a machine deletes its rotor and
+      # rotor-angle separation is the criterion. The metric loses the failure
+      # mode it measures. GFL instability is PLL loss of synchronisation, which
+      # an electromechanical model cannot represent -> EMT required.
+    chi2_detects_naive_attacks: CONFIRMED
+      # random perturbation: J 153 -> 1632 on case39, detected decisively
+    chi2_detects_exact_fdia: REFUTED
+      # a = h(x+c) - h(x) leaves J at 153.28 vs 153.36 clean while corrupting
+      # the state by 20 deg. Undetectable at ANY magnitude or threshold --
+      # structural, not a tuning failure. Motivates out-of-band verification.
+    linearised_fdia_is_stealthy_against_ac: REFUTED
+      # the DC-model construction leaves a second-order residual and IS caught
+      # from 2 deg upward (J 280 vs threshold 173 on case39)
+
+  # Mitigation hypotheses confirmed, for the EMT work to reproduce
+  gfm_min_share_for_well_posed_pct: 25
+  syncon_mva_for_scr_recovery: 400
+  gfm_virtual_inertia_cct_gain: 4.1     # x, at 68.5% IBR on case39

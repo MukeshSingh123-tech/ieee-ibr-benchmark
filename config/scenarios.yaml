@@ -1,0 +1,368 @@
+# =============================================================================
+# SINGLE SOURCE OF TRUTH for every study in this project.
+#
+# Read by:  Python (yaml.safe_load)  |  MATLAB (utils/load_scenarios.m)
+#           PSCAD / ETAP / DIgSILENT via generated CSV in data/interchange/
+#
+# Rule: no study script may hard-code a penetration level, fault location,
+# current limit, or SCR target. If it isn't in this file, it isn't a scenario.
+# =============================================================================
+
+meta:
+  project: "IEEE Bus System - IBR-Penetrated Load Flow, System Strength & Fault Analysis"
+  version: "0.1.0"
+  base_frequency_hz: 60
+  base_mva: 100
+
+# -----------------------------------------------------------------------------
+# TEST SYSTEMS
+# Node caps drive which tool can hold which case:
+#   ETAP Student Edition ....... 15 buses
+#   PSCAD Free Edition ......... 15 nodes
+#   DIgSILENT PF4S ............. 50 nodes
+# -----------------------------------------------------------------------------
+systems:
+  case9:
+    name: "WSCC 3-machine 9-bus"
+    kind: transmission
+    n_bus: 9
+    matpower: case9
+    pandapower: case9          # pandapower.networks.case9
+    role: "EMT + ETAP workhorse (fits every license cap)"
+    tools: [matpower, pandapower, simulink, pscad, etap, digsilent]
+
+  case14:
+    name: "IEEE 14-bus"
+    kind: transmission
+    n_bus: 14
+    matpower: case14
+    pandapower: case14
+    role: "Primary cross-validation case; published fault refs exist"
+    tools: [matpower, pandapower, simulink, digsilent]
+
+  case30:
+    name: "IEEE 30-bus"
+    kind: transmission
+    n_bus: 30
+    matpower: case30
+    pandapower: case30
+    role: "Mid-scale load flow + OPF"
+    tools: [matpower, pandapower, digsilent]
+
+  case39:
+    name: "IEEE 39-bus New England"
+    kind: transmission
+    n_bus: 39
+    matpower: case39
+    pandapower: case39
+    role: "Dynamic / transient stability reference (10 machines)"
+    tools: [matpower, pandapower, simulink, digsilent]
+
+  ieee13:
+    name: "IEEE 13-node test feeder"
+    kind: distribution
+    n_bus: 13
+    opendss: "data/raw/ieee13/IEEE13Nodeckt.dss"
+    role: "Unbalanced 3-phase fundamentals; has published reference results"
+    tools: [opendss, pandapower]
+
+  ieee123:
+    name: "IEEE 123-node test feeder"
+    kind: distribution
+    n_bus: 123
+    opendss: "data/raw/ieee123/IEEE123Master.dss"
+    role: "QSTS + hosting capacity at scale"
+    tools: [opendss]
+
+# -----------------------------------------------------------------------------
+# IBR PENETRATION SWEEP  (WP2)
+# Penetration = share of total synchronous generation MW displaced by IBRs.
+# Displacement order is deterministic: largest machine first, slack never
+# displaced at <100% (a phasor load flow needs an angle reference).
+# -----------------------------------------------------------------------------
+penetration:
+  levels_pct: [0, 20, 40, 60, 80, 100]
+  displacement_order: largest_first     # largest_first | smallest_first | random
+  preserve_slack: true
+  gfm_share_pct: [0, 25, 50, 100]       # of the IBR fleet, how much is grid-forming
+
+# -----------------------------------------------------------------------------
+# IBR CONVERTER MODEL  (WP2 power flow + WP3 fault)
+# These constants are the heart of the project: they are what the classical
+# PV-bus / voltage-source-behind-X'' model does NOT have.
+# -----------------------------------------------------------------------------
+ibr:
+  current_limit_pu: 1.20          # TRANSIENT/fault limit on |I| (a few cycles)
+  current_limit_continuous_pu: 1.00   # STEADY-STATE continuous rating
+  current_limit_sweep_pu: [1.10, 1.20, 1.50]
+  priority: q_priority            # q_priority | d_priority | balanced (WP5 Stateflow)
+
+  # How the replacement inverter is SIZED. This is the most important control in
+  # the whole experiment.
+  #
+  # 'match_machine_capability' sets S_rating = sqrt(PMAX^2 + QMAX^2) from the
+  # displaced machine, so that at nominal voltage and rated power the inverter's
+  # reactive capability EQUALS the synchronous machine's case-file QMAX exactly.
+  # The two models then differ in one respect only: how the limit MOVES with
+  # voltage and active power. Without this, an inferred nameplate can hand the
+  # inverter more reactive capability than the machine it replaces (it did: 33
+  # vs 24 MVAr at IEEE 14-bus buses 6 and 8), and the comparison silently
+  # measures the sizing assumption instead of the physics.
+  #
+  # 'nameplate_fraction' uses an independent plant rating and the fixed
+  # capability fraction below -- realistic, but not a controlled comparison.
+  sizing: match_machine_capability   # match_machine_capability | nameplate_fraction
+  q_capability_fraction: 0.33        # nameplate_fraction mode only (~0.95 pf)
+
+  # Loading stress sweep. The current limit does not bind at the nominal
+  # operating point -- classical and IBR-aware power flow agree there almost
+  # exactly. It binds when the system is stressed, so penetration must be swept
+  # AGAINST loading, not on its own, or the study finds nothing.
+  load_scaling: [1.00, 1.10, 1.20, 1.30, 1.40, 1.50, 1.60]
+
+  # IEEE Std 2800-2022 negative-sequence injection: I2 = K2 * V2
+  ieee2800:
+    enabled: true
+    k2: 4.0                       # nominal; standard permits a range
+    k2_sweep: [0.0, 2.0, 4.0, 6.0]   # 0.0 == pre-2800 behaviour (no neg-seq support)
+    reactive_priority_during_fault: true
+
+  # How the IBR sets reactive power in STEADY STATE.
+  #
+  # 'droop_to_setpoint' is the transmission-connected behaviour (IEEE 2800): the
+  # plant controller regulates to a SCHEDULED voltage, and reactive output is
+  # proportional to the error from that schedule.
+  #
+  # 'ieee1547_voltvar' is the distribution behaviour: a fixed curve referenced to
+  # 1.0 pu nominal. Applying it to transmission machines scheduled at 1.03-1.05 pu
+  # commands enormous absorption at the initial operating point and collapses the
+  # case -- a modelling error, not a physical result. Kept here for the
+  # distribution work (OpenDSS) and for the comparison in the report.
+  # 'voltage_regulating' (default) is the physically correct steady-state model
+  # and the one that isolates this project's variable cleanly. A modern IBR plant
+  # with voltage control behaves as a PV bus -- it holds its scheduled voltage --
+  # right up until the converter current limit binds. The ONLY difference from
+  # the classical model is therefore WHERE the reactive limit sits:
+  #
+  #     classical:  Qmax = constant, read from the case file
+  #     IBR-aware:  Qmax = sqrt((V * Ilim * Srating)^2 - P^2)   <- moves with V and P
+  #
+  # Any difference in results is attributable to that one change, which is what
+  # makes WP2 a controlled experiment rather than two unrelated models.
+  volt_control:
+    mode: voltage_regulating      # voltage_regulating | droop_to_setpoint | ieee1547_voltvar
+    droop_pct: 4.0                # droop mode only: % V error for 100% of Q rating
+    deadband_pu: 0.005
+    q_rating_fraction: 0.33       # usable Q as a fraction of MVA rating (~0.95 pf)
+
+  # IEEE 1547-2018 volt-var droop (Category B default curve), pu
+  volt_var:
+    enabled: true
+    v1: 0.92
+    v2: 0.98
+    v3: 1.02
+    v4: 1.08
+    q1_pu: 0.44       # +Q (injecting) at V1
+    q4_pu: -0.44      # -Q (absorbing) at V4
+
+  # Low-voltage ride-through envelope (WP5 Stateflow FRT state machine)
+  lvrt:
+    - {v_pu: 0.00, t_s: 0.15}     # must ride through 150 ms at zero volts
+    - {v_pu: 0.30, t_s: 0.32}
+    - {v_pu: 0.50, t_s: 2.00}
+    - {v_pu: 0.70, t_s: 3.00}
+    - {v_pu: 0.88, t_s: 5.00}
+
+# -----------------------------------------------------------------------------
+# MACHINE + SEQUENCE DATA  (WP3 fault analysis)
+#
+# IMPORTANT AND MUST BE STATED IN THE REPORT:
+# The MATPOWER IEEE cases carry ONLY positive-sequence load-flow data. They have
+# no subtransient reactances, no negative/zero-sequence data, and no transformer
+# winding connections. Every fault study on these systems therefore rests on
+# assumed machine data -- ours is declared here rather than buried in code, and
+# the sensitivity of results to it is itself a reportable finding.
+#
+# Values are typical utility ranges (Kundur, Anderson, IEEE Std C37.010).
+# -----------------------------------------------------------------------------
+machine_data:
+  # on MACHINE base; converted to system base at build time
+  xdpp_pu: 0.20          # subtransient reactance X"d (fault studies)
+  xdp_pu: 0.30           # TRANSIENT reactance X'd (transient stability, WP7)
+  x2_pu: 0.20            # negative sequence ~= X"d for salient-pole machines
+  x0_pu: 0.07            # zero sequence, typically 0.5*X"d or less
+  xn_pu: 0.0             # neutral grounding reactance (0 = solidly grounded)
+  r_over_x: 0.05         # machine resistance as a fraction of X"d
+  sweep_xdpp_pu: [0.15, 0.20, 0.30]   # sensitivity study
+
+  # The IEEE cases carry no machine MVA rating (MBASE is NaN in pandapower's
+  # ppc), so it is inferred. PMAX is the best available proxy for machine size.
+  mva_base_from: pmax    # pmax | pg | system
+  pg_to_mva_factor: 1.2  # used when mva_base_from == pg (0.85 pf headroom)
+
+  # The slack bus is an unbounded external grid (PMAX = 1e9), so a machine
+  # reactance is meaningless for it. It is instead given a Thevenin impedance
+  # derived from an assumed short-circuit level -- exactly how a utility
+  # specifies an interconnection point.
+  slack:
+    sc_mva: null                 # explicit external-grid SC level (MVA)
+    sc_multiple_of_load: 10.0    # used when sc_mva is null: Ssc = k * total load
+    x_over_r: 10.0               # typical for a transmission-level source
+
+# -----------------------------------------------------------------------------
+# PER-MACHINE DYNAMIC DATA  (WP7 transient stability)
+#
+# Unlike the fault data above, this is NOT invented. WSCC 9-bus and IEEE 39-bus
+# are standard transient-stability benchmarks with published machine data, and
+# using it is what makes the computed CCT comparable with the literature rather
+# than an artefact of a generic inertia constant.
+#
+# Values are given ALREADY REFERRED TO THE 100 MVA SYSTEM BASE, to remove any
+# ambiguity about which base they are on:
+#     H_sys  = H_machine * MVA_machine / 100
+#     X'd_sys = X'd_machine * 100 / MVA_machine
+#
+# case9  : Anderson & Fouad, "Power System Control and Stability", WSCC 3-machine
+#          (machine bases 247.5 / 192.0 / 128.0 MVA)
+# case39 : Athay et al., New England 10-machine system (already on 100 MVA base)
+# -----------------------------------------------------------------------------
+machine_dynamics:
+  case9:
+    #  bus:  H (s, on 100 MVA)   X'd (pu, on 100 MVA)
+    1: {h: 58.50, xdp: 0.0246}
+    2: {h: 12.29, xdp: 0.0624}
+    3: {h:  3.85, xdp: 0.1417}
+  case39:
+    30: {h: 42.0,  xdp: 0.031}
+    31: {h: 30.3,  xdp: 0.0697}
+    32: {h: 35.8,  xdp: 0.0531}
+    33: {h: 28.6,  xdp: 0.0436}
+    34: {h: 26.0,  xdp: 0.132}
+    35: {h: 34.8,  xdp: 0.050}
+    36: {h: 26.4,  xdp: 0.049}
+    37: {h: 24.3,  xdp: 0.057}
+    38: {h: 34.5,  xdp: 0.057}
+    39: {h: 500.0, xdp: 0.006}    # aggregate equivalent for the rest of the grid
+
+sequence_data:
+  # line zero-sequence relative to positive sequence (typical overhead line)
+  line_r0_over_r1: 3.0
+  line_x0_over_x1: 3.0   # 2.5-3.5 typical; ground return path
+  line_b0_over_b1: 0.5
+  # transformers: delta-wye(grounded) blocks zero sequence from the delta side.
+  # MATPOWER branches with TAP != 0 are treated as transformers.
+  transformer_blocks_zero_seq: true
+  # loads during faults: constant-impedance from the prefault solution
+  load_model: constant_impedance   # constant_impedance | neglect
+
+# -----------------------------------------------------------------------------
+# SYSTEM STRENGTH  (WP2)
+# -----------------------------------------------------------------------------
+system_strength:
+  scr_targets: [10.0, 5.0, 3.0, 2.0, 1.5]   # 3.0 is the usual interconnection screen
+  weak_grid_threshold: 3.0
+  metrics: [scr, wscr, cscr]                # plain, ERCOT-weighted, composite
+
+# -----------------------------------------------------------------------------
+# FAULT STUDY  (WP3)
+# -----------------------------------------------------------------------------
+faults:
+  types:                          # canonical name -> pandapower sc.calc_sc code
+    3LG:  "3ph"                   # symmetrical  - least affected by IBRs
+    SLG:  "1ph"                   # line-to-ground - dominant real-world fault
+    LL:   "2ph"                   # line-to-line - depends on negative sequence
+    LLG:  "2ph_gnd"               # double line-to-ground
+  fault_impedance_ohm: [0.0, 1.0, 5.0]      # bolted + resistive
+  case: max                       # IEC 60909 max (also run 'min' for protection)
+  locations:
+    case9:  [4, 5, 7, 9]
+    case14: [4, 5, 9, 14]
+    case39: [16, 21, 24, 39]
+  bus_scan: true                  # additionally fault every bus for the error map
+
+# -----------------------------------------------------------------------------
+# PROTECTION  (WP4)
+# -----------------------------------------------------------------------------
+protection:
+  distance_relay:
+    zone1_reach_pct: 80           # of protected line Z1
+    zone2_reach_pct: 120
+    zone3_reach_pct: 250
+    zone1_delay_s: 0.00
+    zone2_delay_s: 0.30
+    zone3_delay_s: 1.00
+    characteristic: mho           # mho | quad
+  directional:
+    polarization: negative_sequence   # negative_sequence | positive_sequence | memory
+    mta_deg: 60                       # maximum torque angle
+  overcurrent:
+    curve: IEC_standard_inverse       # IEC_standard_inverse | IEC_very_inverse | ANSI
+    cti_s: 0.30                       # coordination time interval
+    pickup_multiplier: 1.25
+
+# -----------------------------------------------------------------------------
+# EMT / DYNAMIC  (WP5)
+# -----------------------------------------------------------------------------
+dynamics:
+  # --- low-order System Frequency Response model (WP5, phasor-domain) --------
+  h_default_s: 4.0              # machine inertia constant, typical large thermal
+  governor_droop_pu: 0.05       # 5% droop
+  reheat_time_s: 8.0
+  mechanical_power_gain: 0.95
+  high_pressure_fraction: 0.3
+  load_damping_pu: 1.0          # load self-regulation D, %change in load per %change in f
+
+  emt_timestep_s: 50.0e-6
+  rms_timestep_s: 5.0e-3
+  sim_time_s: 5.0
+  fault_apply_s: 1.0
+  fault_duration_sweep_s: [0.05, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25]   # -> CCT search
+  cct_tolerance_s: 0.005
+  converter_types: [gfl, gfm]
+  gfl:
+    pll_bandwidth_hz: 20.0
+    current_loop_bandwidth_hz: 400.0
+  gfm:
+    control: droop                # droop | vsm
+    p_droop_pct: 5.0
+    q_droop_pct: 5.0
+    virtual_impedance_pu: {r: 0.01, x: 0.10}
+    inertia_const_s: 4.0          # VSM only
+
+# -----------------------------------------------------------------------------
+# FREQUENCY LIMITS  (WP5)
+# Grid-code values; RoCoF limits vary by system (UK 1.0, Ireland 1.0,
+# continental Europe 2.0, ERCOT effectively lower via inertia floor).
+# -----------------------------------------------------------------------------
+frequency_limits:
+  rocof_hz_s: 1.0               # loss-of-mains protection threshold
+  rocof_sweep_hz_s: [0.5, 1.0, 2.0]
+  ufls_threshold_hz: 59.3       # first under-frequency load shedding stage (60 Hz system)
+  nadir_limit_hz: 59.0
+  settling_limit_hz: 59.5
+
+# -----------------------------------------------------------------------------
+# DISTRIBUTION / QSTS  (WP6)
+# -----------------------------------------------------------------------------
+qsts:
+  stepsize: "15m"
+  n_steps: 35040                  # one year at 15 min
+  mode: yearly
+  pv_penetration_pct: [0, 25, 50, 75, 100, 150, 200]
+  inv_control: [none, voltvar, voltwatt, voltvar_voltwatt]
+  hosting_capacity:
+    criterion: ansi_c84_1_range_a
+    v_max_pu: 1.05
+    v_min_pu: 0.95
+    thermal_limit_pct: 100
+    search: bisection
+    step_kw: 50
+
+# -----------------------------------------------------------------------------
+# MONTE CARLO / PROBABILISTIC  (WP2)
+# -----------------------------------------------------------------------------
+monte_carlo:
+  n_samples: 1000
+  seed: 20260801                  # fixed -> results are reproducible
+  load_sigma_pct: 10.0
+  pv_sigma_pct: 20.0

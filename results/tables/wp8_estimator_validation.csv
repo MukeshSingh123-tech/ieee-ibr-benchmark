@@ -1,0 +1,4 @@
+case,n_measurements,n_states,redundancy,converged,iterations,max_dvm_pu,max_dva_deg,objective_J,chi2_threshold,false_alarm
+case14,82,27,3.03704,True,4,0.001786,0.149616,62.2722,82.2921,False
+case30,172,59,2.91525,True,4,0.00491298,0.148477,126.36,150.882,False
+case39,209,77,2.71429,True,4,0.00067098,0.0205518,153.361,172.711,False

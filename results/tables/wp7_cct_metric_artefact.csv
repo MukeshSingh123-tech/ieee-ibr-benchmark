@@ -1,0 +1,5 @@
+case,pen_pct,gfm_share_pct,n_dynamic_units,h_total_s,cct_s,valid,why
+case39,0,0,10,782.7,0.121094,True,
+case39,40.6,0,7,206.2,0.976562,False,"NOT COMPARABLE: fewer rotors, so the rotor-angle criterion no longer measures the same failure mode"
+case39,68.5,0,4,107,0.835938,False,"NOT COMPARABLE: fewer rotors, so the rotor-angle criterion no longer measures the same failure mode"
+case39,84,0,2,56.3,0.871094,False,"NOT COMPARABLE: fewer rotors, so the rotor-angle criterion no longer measures the same failure mode"

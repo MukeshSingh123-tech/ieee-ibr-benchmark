@@ -1,0 +1,161 @@
+case,pen_pct,bus,fault_type,if_classical_pu,if_ibr_pu,error_pct,angle_classical_deg,angle_ibr_deg,angle_shift_deg,i2_over_i1_classical,i2_over_i1_ibr,iterations,converged,well_posed,note
+case14,20.8211,4,3LG,13.5582,12.685,-6.4402,-85.4447,-86.8112,-1.36656,0,0,4,True,True,
+case14,20.8211,4,SLG,8.08361,7.86386,-2.71843,-84.2471,-85.2556,-1.00844,1,1,3,True,True,
+case14,20.8211,4,LL,11.7417,11.3666,-3.19435,-175.445,-175.027,0.417496,1,1,4,True,True,
+case14,20.8211,4,LLG,12.1724,11.7063,-3.8292,170.881,18.2035,-152.678,0.752096,0.756533,4,True,True,
+case14,20.8211,5,3LG,13.7283,12.8725,-6.23392,-85.5668,32.874,118.441,0,0,4,True,True,
+case14,20.8211,5,SLG,8.00477,7.80007,-2.55727,-83.8686,-85.0927,-1.22405,1,1,3,True,True,
+case14,20.8211,5,LL,11.8891,11.5288,-3.03081,-175.567,-175.344,0.222551,1,1,4,True,True,
+case14,20.8211,5,LLG,12.3343,11.8239,-4.13784,171.209,17.5341,-153.675,0.758996,0.763129,4,True,True,
+case14,20.8211,9,3LG,6.95231,6.71617,-3.39661,-92.6703,-93.7289,-1.05857,0,0,4,True,True,
+case14,20.8211,9,SLG,2.08733,2.03539,-2.48823,-79.6682,-80.8085,-1.14024,1,1,3,True,True,
+case14,20.8211,9,LL,6.02088,5.87159,-2.47954,177.33,176.551,-0.778494,1,1,3,True,True,
+case14,20.8211,9,LLG,6.20973,6.04458,-2.65944,171.885,171.11,-0.774577,0.893068,0.893631,3,True,True,
+case14,20.8211,14,3LG,3.74597,3.6422,-2.77028,-83.8479,-84.9144,-1.06647,0,0,3,True,True,
+case14,20.8211,14,SLG,1.89102,1.84587,-2.38767,-80.8873,-81.9627,-1.07541,1,1,3,True,True,
+case14,20.8211,14,LL,3.24411,3.16562,-2.41939,-173.848,-174.78,-0.931883,1,1,3,True,True,
+case14,20.8211,14,LLG,3.34765,3.26174,-2.56632,175.296,174.363,-0.933889,0.798239,0.798668,3,True,True,
+case14,50.5656,4,3LG,9.98402,6.9461,-30.4278,-80.0932,-79.2918,0.801425,0,0,6,True,True,
+case14,50.5656,4,SLG,5.57654,4.85138,-13.0038,-82.8812,-79.8412,3.04005,1,1,5,True,True,
+case14,50.5656,4,LL,8.64641,7.40316,-14.3789,-170.093,-160.144,9.94903,1,1,7,True,True,
+case14,50.5656,4,LLG,8.98621,7.63277,-15.0614,22.3007,28.0365,5.73586,0.771829,0.83163,7,True,True,
+case14,50.5656,5,3LG,10.2307,7.27999,-28.8414,-79.6898,-79.4306,0.259258,0,0,200,False,True,
+case14,50.5656,5,SLG,5.9492,5.18947,-12.7704,-82.08,-78.8888,3.19127,1,1,5,True,True,
+case14,50.5656,5,LL,8.86001,7.70865,-12.9949,-169.69,-160.038,9.65217,1,1,6,True,True,
+case14,50.5656,5,LLG,9.22364,7.93728,-13.9464,23.4216,28.7188,5.29721,0.760044,0.822237,5,True,True,
+case14,50.5656,9,3LG,5.55408,3.93596,-29.1339,-90.8004,-90.9925,-0.192047,0,0,6,True,True,
+case14,50.5656,9,SLG,0.647107,0.603009,-6.81454,73.9744,72.2073,-1.76708,1,1,4,True,True,
+case14,50.5656,9,LL,4.80998,3.95718,-17.7297,179.2,-175.873,4.92765,1,1,5,True,True,
+case14,50.5656,9,LLG,4.85032,4.00824,-17.3613,-179.048,-174.486,4.56185,1.03626,1.02754,5,True,True,
+case14,50.5656,14,3LG,3.04818,2.10478,-30.9496,-83.5074,-80.9547,2.55268,0,0,5,True,True,
+case14,50.5656,14,SLG,0.767792,0.705666,-8.0915,66.0739,64.2741,-1.79979,1,1,4,True,True,
+case14,50.5656,14,LL,2.6398,2.15738,-18.2751,-173.507,-167.748,5.75906,1,1,5,True,True,
+case14,50.5656,14,LLG,2.72297,2.24866,-17.4186,-170.269,-165.272,4.99644,1.06962,1.05261,5,True,True,
+case14,65.4379,4,3LG,8.27285,5.49501,-33.5778,-74.4178,-69.6276,4.79025,0,0,200,False,True,
+case14,65.4379,4,SLG,5.19404,2.98568,-42.5173,-80.3173,-66.5238,13.7936,1,1,10,True,True,
+case14,65.4379,4,LL,7.1645,5.24546,-26.7854,-164.418,-147.676,16.7416,1,1,200,False,True,
+case14,65.4379,4,LLG,7.67603,5.42227,-29.3611,29.6427,39.6379,9.99521,0.738826,0.84343,200,False,True,
+case14,65.4379,5,3LG,8.81303,6.00043,-31.9142,-75.1252,-73.7212,1.40402,0,0,200,False,True,
+case14,65.4379,5,SLG,5.61204,3.41355,-39.1746,-80.0082,-67.9346,12.0736,1,1,22,True,True,
+case14,65.4379,5,LL,7.63231,5.76553,-24.4589,-165.125,-149.287,15.8378,1,1,200,False,True,
+case14,65.4379,5,LLG,8.14694,5.87613,-27.8731,29.3564,37.4058,8.0495,0.733022,0.831068,200,False,True,
+case14,65.4379,9,3LG,4.10601,1.67744,-59.1468,-84.5245,-76.6787,7.84583,0,0,200,False,True,
+case14,65.4379,9,SLG,0.662097,0.583143,-11.9248,72.9126,71.4564,-1.45624,1,1,200,False,True,
+case14,65.4379,9,LL,3.55591,1.63532,-54.0112,-174.525,-156.352,18.1729,1,1,200,False,True,
+case14,65.4379,9,LLG,3.61374,1.61307,-55.3629,-172.243,-155.148,17.0951,1.04782,1.0234,200,False,True,
+case14,65.4379,14,3LG,2.64491,0.859162,-67.5164,-80.9991,-66.0078,14.9913,0,0,9,True,True,
+case14,65.4379,14,SLG,0.781408,0.678319,-13.1927,64.8974,63.8654,-1.03204,1,1,200,False,True,
+case14,65.4379,14,LL,2.29056,0.914295,-60.0842,-170.999,-152.722,18.2775,1,1,8,True,True,
+case14,65.4379,14,LLG,2.3818,0.952506,-60.0091,-167.376,-150.391,16.9852,1.07883,1.04907,8,True,True,
+case14,65.4379,4,3LG,8.27285,5.49501,-33.5778,-74.4178,-69.6276,4.79025,0,0,200,False,True,
+case14,65.4379,4,SLG,5.19404,2.98568,-42.5173,-80.3173,-66.5238,13.7936,1,1,10,True,True,
+case14,65.4379,4,LL,7.1645,5.24546,-26.7854,-164.418,-147.676,16.7416,1,1,200,False,True,
+case14,65.4379,4,LLG,7.67603,5.42227,-29.3611,29.6427,39.6379,9.99521,0.738826,0.84343,200,False,True,
+case14,65.4379,5,3LG,8.81303,6.00043,-31.9142,-75.1252,-73.7212,1.40402,0,0,200,False,True,
+case14,65.4379,5,SLG,5.61204,3.41355,-39.1746,-80.0082,-67.9346,12.0736,1,1,22,True,True,
+case14,65.4379,5,LL,7.63231,5.76553,-24.4589,-165.125,-149.287,15.8378,1,1,200,False,True,
+case14,65.4379,5,LLG,8.14694,5.87613,-27.8731,29.3564,37.4058,8.0495,0.733022,0.831068,200,False,True,
+case14,65.4379,9,3LG,4.10601,1.67744,-59.1468,-84.5245,-76.6787,7.84583,0,0,200,False,True,
+case14,65.4379,9,SLG,0.662097,0.583143,-11.9248,72.9126,71.4564,-1.45624,1,1,200,False,True,
+case14,65.4379,9,LL,3.55591,1.63532,-54.0112,-174.525,-156.352,18.1729,1,1,200,False,True,
+case14,65.4379,9,LLG,3.61374,1.61307,-55.3629,-172.243,-155.148,17.0951,1.04782,1.0234,200,False,True,
+case14,65.4379,14,3LG,2.64491,0.859162,-67.5164,-80.9991,-66.0078,14.9913,0,0,9,True,True,
+case14,65.4379,14,SLG,0.781408,0.678319,-13.1927,64.8974,63.8654,-1.03204,1,1,200,False,True,
+case14,65.4379,14,LL,2.29056,0.914295,-60.0842,-170.999,-152.722,18.2775,1,1,8,True,True,
+case14,65.4379,14,LLG,2.3818,0.952506,-60.0091,-167.376,-150.391,16.9852,1.07883,1.04907,8,True,True,
+case14,100,4,3LG,2.46473,0,-100,-20.8324,0,20.8324,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,4,SLG,0.355434,0,-100,74.0361,0,-74.0361,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,4,LL,2.13452,0,-100,-110.832,0,110.832,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,4,LLG,2.22158,0,-100,-110.479,0,110.479,1.00744,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,5,3LG,2.45286,0,-100,-21.0534,0,21.0534,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,5,SLG,0.356768,0,-100,75.5929,0,-75.5929,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,5,LL,2.12424,0,-100,-111.053,0,111.053,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,5,LLG,2.21097,0,-100,-110.627,0,110.627,1.00897,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,9,3LG,2.25982,0,-100,-33.3092,0,33.3092,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,9,SLG,0.627639,0,-100,64.9408,0,-64.9408,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,9,LL,1.95706,0,-100,-123.309,0,123.309,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,9,LLG,2.1041,0,-100,-122.17,0,122.17,1.02494,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,14,3LG,1.84344,0,-100,-42.6464,0,42.6464,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,14,SLG,0.71717,0,-100,56.5057,0,-56.5057,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,14,LL,1.59647,0,-100,-132.646,0,132.646,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case14,100,14,LLG,1.75837,0,-100,-130.768,0,130.768,1.04243,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,28.9233,16,3LG,86.3167,77.8327,-9.82895,-83.3377,146.903,-129.76,0,0,4,True,True,
+case39,28.9233,16,SLG,1.61477,1.4753,-8.63722,-56.4551,-66.2147,-9.7596,1,1,4,True,True,
+case39,28.9233,16,LL,74.7524,68.3954,-8.50414,-173.338,177.16,-9.50205,1,1,4,True,True,
+case39,28.9233,16,LLG,74.9389,68.56,-8.51214,-173.615,176.885,-9.49994,0.994419,0.994479,4,True,True,
+case39,28.9233,21,3LG,60.3146,55.0622,-8.70832,-86.0024,-95.4379,-9.43546,0,0,4,True,True,
+case39,28.9233,21,SLG,2.09635,1.92304,-8.26752,-55.5845,-65.1309,-9.54637,1,1,4,True,True,
+case39,28.9233,21,LL,52.234,47.964,-8.17481,-176.002,174.561,-9.43635,1,1,4,True,True,
+case39,28.9233,21,LLG,52.5094,48.2136,-8.18115,-176.5,174.065,-9.43416,0.989962,0.990016,4,True,True,
+case39,28.9233,24,3LG,65.0244,59.0319,-9.21582,-85.9784,-95.5567,-9.57827,0,0,4,True,True,
+case39,28.9233,24,SLG,1.78785,1.63574,-8.50842,-56.9496,-66.639,-9.68935,1,1,4,True,True,
+case39,28.9233,24,LL,56.3128,51.5862,-8.39343,-175.978,174.498,-9.52326,1,1,4,True,True,
+case39,28.9233,24,LLG,56.5363,51.7867,-8.4011,-176.378,174.101,-9.52088,0.991952,0.992014,4,True,True,
+case39,28.9233,39,3LG,27.6608,20.6459,-25.3605,46.5795,139.583,93.003,0,0,4,True,True,
+case39,28.9233,39,SLG,0.80677,0.650602,-19.3572,-59.6756,-83.7439,-24.0684,1,1,4,True,True,
+case39,28.9233,39,LL,23.9549,18.8236,-21.421,-163.42,173.938,-22.6419,1,1,4,True,True,
+case39,28.9233,39,LLG,24.0051,18.8462,-21.4906,-163.894,173.488,-22.6172,0.990474,0.990982,4,True,True,
+case39,40.6143,16,3LG,83.2172,71.1948,-14.447,-80.7958,-93.4466,-12.6508,0,0,4,True,True,
+case39,40.6143,16,SLG,1.6137,1.42867,-11.4665,-56.4375,-68.9795,-12.542,1,1,4,True,True,
+case39,40.6143,16,LL,72.0682,63.9306,-11.2915,-170.796,177.181,-12.0235,1,1,4,True,True,
+case39,40.6143,16,LLG,72.2385,64.0679,-11.3106,-171.089,176.894,-12.0162,0.994088,0.994273,4,True,True,
+case39,40.6143,21,3LG,59.5176,52.291,-12.142,35.2931,-96.0466,-131.34,0,0,4,True,True,
+case39,40.6143,21,SLG,2.09524,1.86862,-10.8157,-55.5671,-67.2128,-11.6457,1,1,4,True,True,
+case39,40.6143,21,LL,51.5437,46.0656,-10.6281,-174.707,173.886,-11.4068,1,1,4,True,True,
+case39,40.6143,21,LLG,51.8088,46.2952,-10.6424,-175.218,173.382,-11.3993,0.989695,0.989859,4,True,True,
+case39,40.6143,24,3LG,63.6163,55.0479,-13.4689,-84.1317,-96.2395,-12.1078,0,0,4,True,True,
+case39,40.6143,24,SLG,1.78671,1.58528,-11.2739,-56.9304,-69.1951,-12.2647,1,1,4,True,True,
+case39,40.6143,24,LL,55.0934,48.9948,-11.0695,-174.132,173.954,-11.9144,1,1,4,True,True,
+case39,40.6143,24,LLG,55.3042,49.1725,-11.0872,-174.547,173.547,-11.9062,0.991632,0.991821,4,True,True,
+case39,40.6143,39,3LG,27.5244,19.7267,-28.3299,-72.4847,-102.679,-30.1944,0,0,4,True,True,
+case39,40.6143,39,SLG,0.806635,0.629511,-21.9584,-59.6591,-86.7848,-27.1257,1,1,4,True,True,
+case39,40.6143,39,LL,23.8368,18.1607,-23.8122,-162.485,171.885,-25.6303,1,1,4,True,True,
+case39,40.6143,39,LLG,23.8837,18.1795,-23.8833,-162.963,171.438,-25.5993,0.990391,0.991017,4,True,True,
+case39,68.5105,16,3LG,61.8921,42.1989,-31.8186,48.571,-96.371,-144.942,0,0,4,True,True,
+case39,68.5105,16,SLG,1.60565,1.21965,-24.0404,-56.3899,-78.1787,-21.7888,1,1,4,True,True,
+case39,68.5105,16,LL,53.6001,39.6555,-26.016,-161.429,177.04,-21.5308,1,1,5,True,True,
+case39,68.5105,16,LLG,53.7084,39.7002,-26.082,-161.847,176.65,-21.5029,0.991586,0.992363,5,True,True,
+case39,68.5105,21,3LG,44.2298,30.5603,-30.9056,43.2293,-101.162,-144.391,0,0,4,True,True,
+case39,68.5105,21,SLG,2.07667,1.57207,-24.2985,-55.5668,-77.5365,-21.9698,1,1,4,True,True,
+case39,68.5105,21,LL,38.3041,28.614,-25.2979,-166.771,171.965,-21.2642,1,1,5,True,True,
+case39,68.5105,21,LLG,38.5036,28.7111,-25.4326,-167.505,171.214,-21.2813,0.985244,0.986122,5,True,True,
+case39,68.5105,24,3LG,50.4077,34.5745,-31.4103,-75.7373,-99.8399,-24.1026,0,0,5,True,True,
+case39,68.5105,24,SLG,1.77656,1.35111,-23.9477,-56.8768,-78.3733,-21.4966,1,1,4,True,True,
+case39,68.5105,24,LL,43.6544,32.7969,-24.8714,-165.737,173.532,-20.7312,1,1,5,True,True,
+case39,68.5105,24,LLG,43.8049,32.8704,-24.9619,-166.295,172.995,-20.7096,0.98878,0.989622,5,True,True,
+case39,68.5105,39,3LG,27.1695,16.6036,-38.8888,-69.7499,-105.71,-35.9602,0,0,4,True,True,
+case39,68.5105,39,SLG,0.806283,0.549062,-31.9021,-59.6093,-91.631,-32.0217,1,1,4,True,True,
+case39,68.5105,39,LL,23.5295,15.7378,-33.1147,-159.75,169.75,-30.5003,1,1,4,True,True,
+case39,68.5105,39,LLG,23.5669,15.7459,-33.1866,-160.239,169.31,-30.4513,0.990171,0.991148,4,True,True,
+case39,83.9723,16,3LG,50.3846,19.5383,-61.2217,-57.1311,-100.759,-43.6283,0,0,200,False,True,
+case39,83.9723,16,SLG,23.7367,11.8639,-50.0187,66.2183,36.6229,-29.5954,1,1,5,True,True,
+case39,83.9723,16,LL,43.6343,20.8402,-52.2389,-147.131,179.871,-32.9983,1,1,5,True,True,
+case39,83.9723,16,LLG,47.5378,22.5669,-52.5286,-142.854,-176.908,-34.0539,1.09818,1.07091,5,True,True,
+case39,83.9723,21,3LG,35.5568,13.4281,-62.2349,175.665,128.213,-47.4521,0,0,5,True,True,
+case39,83.9723,21,SLG,35.9719,17.8157,-50.4732,57.0094,24.7596,-32.2498,1,1,5,True,True,
+case39,83.9723,21,LL,30.7931,13.5855,-55.8815,-154.335,168.178,-37.4865,1,1,8,True,True,
+case39,83.9723,21,LLG,35.4826,15.5579,-56.1536,-145.945,174.93,-39.1256,1.21346,1.15822,6,True,True,
+case39,83.9723,24,3LG,41.6083,15.9522,-61.661,-62.5847,-106.127,-43.5424,0,0,5,True,True,
+case39,83.9723,24,SLG,28.9561,14.5158,-49.8699,61.5561,31.2736,-30.2824,1,1,5,True,True,
+case39,83.9723,24,LL,36.0339,16.5347,-54.1134,-152.585,172.116,-35.2993,1,1,6,True,True,
+case39,83.9723,24,LLG,40.2337,18.3094,-54.4924,-146.372,177.105,-36.523,1.14933,1.11365,6,True,True,
+case39,83.9723,39,3LG,27.0058,9.81863,-63.6426,-64.4995,-110.546,-46.0466,0,0,6,True,True,
+case39,83.9723,39,SLG,41.7565,18.3807,-55.9812,25.9198,-7.22597,-33.1458,1,1,5,True,True,
+case39,83.9723,39,LL,23.3877,9.71632,-58.4555,-154.499,167.06,-38.441,1,1,5,True,True,
+case39,83.9723,39,LLG,30.3016,12.4949,-58.7649,-144.88,175.141,-39.9789,1.27744,1.21307,5,True,True,
+case39,100,16,3LG,49.5509,0,-100,-34.0219,0,34.0219,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,16,SLG,21.2486,0,-100,63.5546,0,-63.5546,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,16,LL,42.9123,0,-100,-124.022,0,124.022,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,16,LLG,47.7177,0,-100,-122.018,0,122.018,1.04573,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,21,3LG,38.567,0,-100,-48.3864,0,48.3864,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,21,SLG,30.3308,0,-100,55.875,0,-55.875,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,21,LL,33.4,0,-100,-138.386,0,138.386,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,21,LLG,39.0164,0,-100,-133.097,0,133.097,1.13134,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,24,3LG,43.6321,0,-100,-163.109,0,163.109,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,24,SLG,25.1964,0,-100,59.3606,0,-59.3606,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,24,LL,37.7865,0,-100,-133.109,0,133.109,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,24,LLG,42.9584,0,-100,-129.597,0,129.597,1.08325,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,39,3LG,29.7293,0,-100,-54.7132,0,54.7132,0,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,39,SLG,35.8468,0,-100,31.1847,0,-31.1847,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,39,LL,25.7463,0,-100,-144.713,0,144.713,1,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"
+case39,100,39,LLG,32.9565,0,-100,-138.218,0,138.218,1.17766,nan,0,False,False,"no voltage source remains (no synchronous plant, no grid-forming converters) -- phasor fault model is ill-posed; add GFM or run EMT"

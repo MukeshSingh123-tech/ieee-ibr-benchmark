@@ -1,0 +1,3 @@
+case,fault_bus,cleared_by_tripping,n_machines,h_total_s,cct_s,bracketed,published_reference
+case9,7,6-7,3,74.64,0.503906,True,n/a
+case39,16,16-17,10,782.7,0.121094,True,"~0.15 s (Athay et al., 3LG at bus 16)"
