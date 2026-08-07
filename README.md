@@ -425,7 +425,7 @@ Open an issue before large changes so we can agree the approach.
 └── results/         tables/ (22) · figures/ (30)
 ```
 
-The MATLAB / Simulink / Stateflow half of this project lives separately — see [`README2.md`](README2.md).
+The MATLAB / Simulink / Stateflow half of this project lives separately — see [`MATLAB.md`](MATLAB.md).
 
 ---
 
